@@ -20,7 +20,7 @@ class AutoP:
 
     COMM_R = False
     OPTN_R = False
-    CTRL_R = False
+    CMD = False
     pw = ""
     tf = ""
 
@@ -35,26 +35,26 @@ class AutoP:
     def pressed(self, key):
         if key == Key.cmd_r: self.COMM_R = True
         if key == Key.alt_r: self.OPTN_R = True
-        if key == Key.ctrl_r: self.CTRL_R = True
+        if key == Key.cmd: self.CMD = True
 
     def released(self, key):
-        if self.COMM_R and self.CTRL_R:
+        if self.COMM_R and self.CMD:
             print("Executing pw")
             pyperclip.copy(self.pw)
             time.sleep(.1)
             pyautogui.hotkey('command', 'v')
             self.COMM_R = False
-            self.CTRL_R = False
-        if self.OPTN_R and self.CTRL_R:
+            self.CMD = False
+        if self.OPTN_R and self.CMD:
             print("Executing tf")
             time.sleep(.1)
             pyperclip.copy(self.bloatShell())
             pyautogui.hotkey('command', 'v')
             self.OPTN_R = False
-            self.CTRL_R = False
+            self.CMD = False
         if key == Key.cmd_r: self.COMM_R = False
         if key == Key.alt_r: self.OPTN_R = False
-        if key == Key.ctrl_r: self.CTRL_R = False
+        if key == Key.ctrl_r: self.CMD = False
 
 
 autoP = AutoP()
