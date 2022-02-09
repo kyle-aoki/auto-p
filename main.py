@@ -54,7 +54,7 @@ class AutoP:
             self.CMD = False
         if key == Key.cmd_r: self.COMM_R = False
         if key == Key.alt_r: self.OPTN_R = False
-        if key == Key.ctrl_r: self.CMD = False
+        if key == Key.cmd: self.CMD = False
 
 
 autoP = AutoP()
